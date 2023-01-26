@@ -16,6 +16,8 @@ public class AI : MonoBehaviour
 
     void Start()
     {
+        Waypoints[0] = GameObject.Find("AIStartPoint").transform;
+        Waypoints[1] = GameObject.Find("AIEndPoint").transform;
         _agent.destination = Waypoints[0].transform.position;
     }
 
