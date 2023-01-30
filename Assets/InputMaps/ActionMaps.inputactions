@@ -1,0 +1,34 @@
+{
+    "name": "ActionMaps",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "1d6701e4-d1e6-46be-97ae-d4709ff5a17a",
+            "actions": [
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "2ebb592c-0daf-4f57-bc0c-b3d1a6470d2b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0890623d-cd14-4c40-aa8d-0cec51acca9d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
