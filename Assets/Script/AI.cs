@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
     [SerializeField] private List<Transform> _cover;
+    [SerializeField] private AudioClip _deathClip;
+    private AudioSource AudioSource;
     private Animator _animator;
     private Transform _startingPoint;
     private Transform _endPoint;
@@ -27,6 +27,7 @@ public class AI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _currentState = AIStates.Run;
         _animator = GetComponent<Animator>();
+        AudioSource = GetComponent<AudioSource>();
 
     }
 
@@ -69,6 +70,7 @@ public class AI : MonoBehaviour
             case AIStates.Death:
                 _agent.isStopped = true;
                 gameObject.transform.GetComponent<Collider>().enabled = false;
+                if (AudioSource.time == 1.5f) AudioSource.Stop();
               _animator.SetBool("Death", true);
                 Destroy(this.gameObject, 2f);
                 break;
@@ -112,6 +114,8 @@ public class AI : MonoBehaviour
     public void Death()
     {
         _isDead = true;
+        AudioSource.clip = _deathClip;
+        AudioSource.Play();
         StopAllCoroutines();
     }
 

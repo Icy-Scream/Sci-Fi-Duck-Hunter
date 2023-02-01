@@ -5,38 +5,49 @@ using UnityEngine.InputSystem;
 
 public class Fire : MonoBehaviour
 {
-    Ray _ray;
-    bool _canFire = true;
-    [SerializeField]Camera _camera;
-    [SerializeField] PlayerManager _playerManager;
+    private Ray _ray;
+    private ActionMaps _inputs;
+    private AudioSource _gunFire;
+   [SerializeField] private AudioClip _barrier;
+    private bool _canFire = true;
+    [SerializeField] private Camera _camera;
+    private PlayerManager _playerManager;
     [SerializeField] private LayerMask _mask;
+    private float _timer = 0.5f;
 
     private void Awake()
     {
         _playerManager = GetComponent<PlayerManager>();
+        _gunFire = GetComponent<AudioSource>();
+        _inputs = new ActionMaps();
     }
-    private void FixedUpdate()
+
+    private void OnEnable()
     {
-        _ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-        if (Mouse.current.leftButton.isPressed && _canFire)
+        _inputs.Player.Enable();
+        _inputs.Player.Fire.performed += Fire_performed;
+        _inputs.Player.Fire.canceled += Fire_canceled;
+    }
+
+    private void Fire_canceled(InputAction.CallbackContext obj)
+    {
+            _canFire = true;
+    }
+
+    private void Fire_performed(InputAction.CallbackContext obj)
+    {
+        if (_canFire) 
         {
+            _ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+            _gunFire.Play();
             _canFire = false;
+            _timer += Time.time;
             Firing();
-            StartCoroutine(FiringCoolDownRoutine());
         }
-
-
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(_ray);
-    }
-
     private void Firing()
     {
-        if (Physics.Raycast(_ray, out RaycastHit _hit, Mathf.Infinity,_mask))
+        if (Physics.Raycast(_ray, out RaycastHit _hit, Mathf.Infinity,1<<3))
         {
             if (_hit.transform.CompareTag("Enemy"))
             {
@@ -46,9 +57,11 @@ public class Fire : MonoBehaviour
                 _playerManager.PlayerScore(60);
                 ai.Death();
             }
-            else
-                Debug.Log(_hit.ToString());
         }
+        else if(Physics.Raycast(_ray,Mathf.Infinity,1<<6))
+            {
+                AudioSource.PlayClipAtPoint(_barrier, new Vector3(0, 11, 32), 500);
+            }
 
     }
 

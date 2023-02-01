@@ -15,9 +15,4 @@ public class PlayerManager : MonoBehaviour
         Score += value;
         UIManager._instance.PlayerScore(Score);
     }
-
-    private void Update()
-    {
-        Debug.Log(Score);
-    }
 }
