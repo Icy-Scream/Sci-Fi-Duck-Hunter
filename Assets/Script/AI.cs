@@ -54,8 +54,11 @@ public class AI : MonoBehaviour
                     StartCoroutine(FindCoverRoutine());
                 }
                 _agent.isStopped = false;
-                    if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
-                        _agent.destination = _endPoint.position;
+                if (!_agent.pathPending && _agent.remainingDistance < 0.5f) 
+                {
+                    _agent.destination = _endPoint.position;
+                }
+                
                 break;
            
             case AIStates.Hide:

@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _spawnCount;
     [SerializeField] TMP_Text _timer;
+    [SerializeField] TMP_Text _escapedEnemiesText;
     void Start()
     {
         if (_instance != null && _instance != this)
@@ -21,7 +22,7 @@ public class UIManager : MonoBehaviour
 
     public void Timer(float timer) => _timer.text = ($"Time Remaining: {Mathf.RoundToInt(timer / 60)}:{Mathf.RoundToInt(timer % 60)}");
     public void SpawnCount(int count, int maxCount) => _spawnCount.text = ($"Enemies Left: {count}/{maxCount}");
-
+    public void EnemiesEscaped(int escaped) => _escapedEnemiesText.text = ($"Enemies Escaped: {escaped}");
     public void PlayerScore(int score) => _scoreText.text = ($"Score: {score.ToString()}");
     
 }

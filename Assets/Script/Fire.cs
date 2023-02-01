@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,7 +46,7 @@ public class Fire : MonoBehaviour
     }
     private void Firing()
     {
-        if (Physics.Raycast(_ray, out RaycastHit _hit, Mathf.Infinity,1<<3))
+        if (Physics.Raycast(_ray, out RaycastHit _hit, Mathf.Infinity,_mask))
         {
             if (_hit.transform.CompareTag("Enemy"))
             {
@@ -57,11 +56,12 @@ public class Fire : MonoBehaviour
                 _playerManager.PlayerScore(60);
                 ai.Death();
             }
-        }
-        else if(Physics.Raycast(_ray,Mathf.Infinity,1<<6))
+            else if(_hit.transform.CompareTag("Barriers")) 
             {
+                Debug.Log("BARRIER");
                 AudioSource.PlayClipAtPoint(_barrier, new Vector3(0, 11, 32), 500);
             }
+        }
 
     }
 

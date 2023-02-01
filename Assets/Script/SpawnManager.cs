@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _spawnTime;
     [SerializeField] private GameObject _enemyPool;
-    [SerializeField] private int _spawnLimit;
+    [SerializeField] public int _spawnLimit { get; private set; } = 15;
     public int _spawnCount { get; set; }
     private int _stopSpawning = 0;
     private bool spawn = true;
