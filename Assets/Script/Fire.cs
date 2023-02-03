@@ -13,6 +13,7 @@ public class Fire : MonoBehaviour
     private PlayerManager _playerManager;
     [SerializeField] private LayerMask _mask;
     private float _timer = 0.5f;
+    private IExplode _damagable;
 
     private void Awake()
     {
@@ -27,7 +28,10 @@ public class Fire : MonoBehaviour
         _inputs.Player.Fire.performed += Fire_performed;
         _inputs.Player.Fire.canceled += Fire_canceled;
     }
-
+    private void Start()
+    {
+       
+    }
     private void Fire_canceled(InputAction.CallbackContext obj)
     {
             _canFire = true;
@@ -56,10 +60,18 @@ public class Fire : MonoBehaviour
                 _playerManager.PlayerScore(60);
                 ai.Death();
             }
-            else if(_hit.transform.CompareTag("Barriers")) 
+            else if (_hit.transform.CompareTag("Barriers"))
             {
                 Debug.Log("BARRIER");
+                _damagable = _hit.transform.gameObject.GetComponent<Barrier>();
+                _damagable.Damage(5);
                 AudioSource.PlayClipAtPoint(_barrier, new Vector3(0, 11, 32), 500);
+            }
+            else 
+            {
+                Explosive_Barrel barrel = _hit.transform.gameObject.GetComponentInParent<Explosive_Barrel>();
+                barrel._isIgnited = true;
+                Debug.Log("BOOM");
             }
         }
 
