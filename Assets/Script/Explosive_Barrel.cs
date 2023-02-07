@@ -6,12 +6,14 @@ public class Explosive_Barrel : MonoBehaviour
 {
     public bool _isIgnited { get; set; }
     [SerializeField] private GameObject _explosion;
-
+    [SerializeField] private AudioSource _audioSource;
     private void Update()
     {
         if (_isIgnited) 
         {
+            _isIgnited = false;
             _explosion.SetActive(true);
+            _audioSource.Play();
             Destroy(this.gameObject, 2f);
         }
     }
