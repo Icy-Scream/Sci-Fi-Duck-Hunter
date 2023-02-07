@@ -7,7 +7,7 @@ public class Fire : MonoBehaviour
     private Ray _ray;
     private ActionMaps _inputs;
     private AudioSource _gunFire;
-   [SerializeField] private AudioClip _barrier;
+    [SerializeField] private AudioClip _barrier;
     private bool _canFire = true;
     [SerializeField] private Camera _camera;
     private PlayerManager _playerManager;
@@ -28,10 +28,7 @@ public class Fire : MonoBehaviour
         _inputs.Player.Fire.performed += Fire_performed;
         _inputs.Player.Fire.canceled += Fire_canceled;
     }
-    private void Start()
-    {
-       
-    }
+
     private void Fire_canceled(InputAction.CallbackContext obj)
     {
             _canFire = true;
