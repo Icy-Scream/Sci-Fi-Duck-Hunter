@@ -61,7 +61,10 @@ namespace GameDevHQ.FileBase.Plugins.FPS_Character_Controller
             CameraController();
             HeadBobbing(); 
         }
-
+        private void OnDisable()
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         void FPSController()
         {
             float h = Input.GetAxis("Horizontal"); //horizontal inputs (a, d, leftarrow, rightarrow)

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1470549213}
   - component: {fileID: 4501786683479443624}
   - component: {fileID: 1788808256}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Explosive_Barrel
-  m_TagString: Untagged
+  m_TagString: Explosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +171,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4688366795601781929, guid: 0bd59304b034bee4e939420e993113e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4688366795601781930, guid: 0bd59304b034bee4e939420e993113e1,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -195,6 +200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Explosion_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688366796816071956, guid: 0bd59304b034bee4e939420e993113e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4688366796816071956, guid: 0bd59304b034bee4e939420e993113e1,
         type: 3}
@@ -260,6 +270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105708310852003304, guid: 0bd59304b034bee4e939420e993113e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bd59304b034bee4e939420e993113e1, type: 3}

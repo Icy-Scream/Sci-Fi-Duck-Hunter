@@ -62,7 +62,6 @@ public class Fire : MonoBehaviour
             }
             else if (_hit.transform.CompareTag("Barriers"))
             {
-                Debug.Log("BARRIER");
                 _damagable = _hit.transform.gameObject.GetComponent<Barrier>();
                 _damagable.Damage(5);
                 AudioSource.PlayClipAtPoint(_barrier, new Vector3(0, 11, 32), 500);
@@ -81,5 +80,12 @@ public class Fire : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         _muzzleFlash.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        _inputs.Player.Fire.performed -= Fire_performed;
+        _inputs.Player.Fire.canceled -= Fire_canceled;
+        _inputs.Player.Disable();
     }
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         if (_enemiesGoal >= Mathf.RoundToInt(_enemiesTotal * .5f)) 
         {
+            Cursor.visible = true;
             SceneManager.LoadScene(2);
         }
     }
@@ -33,12 +33,14 @@ public class GameManager : MonoBehaviour
     {
         if (_enemiesLeft == 0)
         {
+            Cursor.visible = true;
             SceneManager.LoadScene(1);
         }
     }
 
     public void RestartGame() 
     {
+        Cursor.visible = false;
         SceneManager.LoadScene(0);
     }
 
