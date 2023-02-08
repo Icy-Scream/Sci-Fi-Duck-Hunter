@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        _enemiesLeft = SpawnManager._instance._spawnCount;
         UIManager._instance.EnemiesEscaped(_enemiesGoal);
+        _enemiesLeft = SpawnManager._instance._spawnCount;
         Win();
         GameOver();
     }
@@ -37,11 +37,4 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
-
-    public void RestartGame() 
-    {
-        Cursor.visible = false;
-        SceneManager.LoadScene(0);
-    }
-
 }

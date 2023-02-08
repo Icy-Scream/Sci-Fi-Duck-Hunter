@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/GameDevHQ/FileBase/Projects/Tutorials/Starter_Files/Game_Logic_Interactions_1/Scenes/GLI_1.unity
     guid: 5d7e0e444d29e47b998a96108dc107c1
   - enabled: 1
-    path: Assets/Scenes/Win_Scene.unity
-    guid: f1c492fc13774d045aea9952f3eff397
+    path: Assets/Scenes/Winning_Scene.unity
+    guid: 01e0e4350af2be24f9c5fe2c828682a9
   - enabled: 1
     path: Assets/Scenes/Lose_Scene.unity
     guid: 3d47f7a2f40926347b33f668d4f77419
