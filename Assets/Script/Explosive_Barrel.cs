@@ -25,6 +25,7 @@ public class Explosive_Barrel : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && _isDestroyed) 
         {
             other.TryGetComponent<AI>(out AI aI);
+            SpawnManager._instance._spawnCount--;
             aI.Death();
         }
     }
